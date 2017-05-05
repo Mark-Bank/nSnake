@@ -12,7 +12,7 @@ void version(command_t* self)
 	(void)(self);
 
 	std::cout <<
-		"nsnake v" VERSION " (" DATE ")\n"
+		"nsnake v" "3.0.1" " (" "May2017" ")\n"
 		"\n"
 		"   ,           ,\n"
 		"  /             \\  This game was made with\n"
@@ -39,7 +39,7 @@ void help(command_t* self)
 		" _      __   _       __    _     ____ \n"
 		"| |\\ | ( (` | |\\ |  / /\\  | |_/ | |_  \n"
 		"|_| \\| _)_) |_| \\| /_/--\\ |_| \\ |_|__ \n"
-		"v" VERSION "                 (built " DATE ")\n"
+		"v" "3.0.1" "                 (built " "May2017" ")\n"
 		"\n"
 		"nsnake is the classical snake game on the terminal\n"
 		"\n"
@@ -63,7 +63,7 @@ void Arguments::parse(int argc, char* argv[])
 {
 	// commander internal data structure
 	command_t cmd;
-	command_init(&cmd, argv[0], VERSION);
+	command_init(&cmd, argv[0], "3.0.1");
 
 	command_option(&cmd, "-v", "--version", "Show game version and build date", version);
 	command_option(&cmd, "-h", "--help",    "Show instructions", help);

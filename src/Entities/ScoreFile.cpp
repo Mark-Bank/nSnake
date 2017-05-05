@@ -227,7 +227,7 @@ void ScoreFile::save()
 	// We'll recreate the whole score file from scratch
 	INI::Parser ini;
 	ini.create();
-	ini.top().addKey("version", std::string(VERSION));
+	ini.top().addKey("version", std::string("3.0.1"));
 
 	// Adding each score entry on the file
 	for (size_t i = 0; i < (this->entries.size()); i++)

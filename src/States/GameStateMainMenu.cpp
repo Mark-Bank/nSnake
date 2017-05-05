@@ -272,7 +272,7 @@ void GameStateMainMenu::update()
 					Dialog::show("Sorry, it seems you have no levels.\n"
 					             "\n"
 					             "Please copy the default level files from\n"
-					             "`"  SYSTEM_LEVEL_DIR "/`\n"
+					             "`"  "/usr/share/games/nsnake/levels" "/`\n"
 					             "to\n"
 					             "`" + BoardParser::directory + "`\n" +
 					             "\n"

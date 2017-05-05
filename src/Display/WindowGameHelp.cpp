@@ -117,7 +117,7 @@ void WindowGameHelp::run()
 			                                             "|_| \\| _)_) |_| \\| /_/--\\ |_| \\ |_|__", '\n'),
 			                        0, 0, Colors::pair("blue", "default", true));
 
-			this->windows[1]->print(" v" VERSION "               (built " DATE ")",
+			this->windows[1]->print(" v" "3.0.1" "               (built " "May2017" ")",
 			                        0, 3,
 			                        Colors::pair("green", "default", true));
 

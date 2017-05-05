@@ -12,9 +12,9 @@
 #include <fstream>
 
 // VERSION is formatted like "0.0.1" - i'm skipping the dots
-char Globals::version[3] = { VERSION[0],
-                             VERSION[2],
-                             VERSION[4] };
+char Globals::version[3] = { '3',
+                             '0',
+                             '1' };
 
 //  __    ___   _      ____  _   __
 // / /`  / / \ | |\ | | |_  | | / /`_
@@ -82,7 +82,7 @@ void Globals::init()
 
 	Globals::Config::directory = (Utils::File::getHome() +
 	                              ".local/share/" +
-	                              PACKAGE + "/");
+	                              "nsnake" + "/");
 
 	if (Utils::String::front(Globals::Config::directory) != '/')
 	{
