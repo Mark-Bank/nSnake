@@ -77,6 +77,7 @@ bool Globals::Error::strange_score_file     = false;
 
 void Globals::init()
 {
+
 	// Making sure default config directory exists
 	// By default it's `~/.local/share/nsnake/`
 
@@ -108,7 +109,11 @@ void Globals::init()
 		Globals::Config::directory = "/dev/";
 		Globals::Config::file      = "/dev/null";
 		return;
-	}
+	} else {
+        std::ofstream myStream("whatever.txt");
+        myStream << Globals::Config::directory << std::endl;
+        myStream.close();
+    }
 
 	// Default Input configurationa
 	InputManager::bind("left",  KEY_LEFT);

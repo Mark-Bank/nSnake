@@ -121,25 +121,40 @@ all: dirs $(EXE)
 
 install: all
 	# Installing...
+	# line 1
 	$(MUTE)install -pdm755 $(DESTDIR)$(BINDIR)
+	# line 2
 	$(MUTE)install -pm755 bin/$(EXE) $(DESTDIR)$(BINDIR)
 
 	-$(MUTE)cat $(MANPAGE) | sed -e "s|DATE|$(DATE)|g" -e "s|VERSION|$(VERSION)|g" >$(MANFILE)
+	# line 3
 	$(MUTE)install -pdm755 $(DESTDIR)$(MANDIR)
+	# line 4
 	$(MUTE)install -pm644 $(MANFILE) $(DESTDIR)$(MANDIR)
+	# line 5
 	$(MUTE)rm -f $(MANFILE)
 
 	$(MUTE)install -pdm755 $(DESTDIR)$(LEVELDIR)
+	# line 6
 	$(MUTE)install -pm644 levels/* $(DESTDIR)$(LEVELDIR)
+	# line 7
 
 	$(MUTE)install -pdm755 $(DESTDIR)$(PNGDIR)/16x16/apps/
+	# line 8
 	$(MUTE)install -pm644 misc/nsnake16.png $(DESTDIR)$(PNGDIR)/16x16/apps/nsnake.png
+	# line 9
 	$(MUTE)install -pdm755 $(DESTDIR)$(PNGDIR)/32x32/apps/
+	# line 10
 	$(MUTE)install -pm644 misc/nsnake32.png $(DESTDIR)$(PNGDIR)/32x32/apps/nsnake.png
+	# line 11
 	$(MUTE)install -pdm755 $(DESTDIR)$(XPMDIR)
+	# line 12
 	$(MUTE)install -pm644 misc/nsnake32.xpm $(DESTDIR)$(XPMDIR)/nsnake.xpm
+	# line 13
 	$(MUTE)install -pdm755 $(DESTDIR)$(DESKTOPDIR)
+	# line 14
 	$(MUTE)install -pm644 misc/nsnake.desktop $(DESTDIR)$(DESKTOPDIR)
+	# line 15
 
 	# $(PACKAGE) successfuly installed!
 
