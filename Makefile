@@ -9,7 +9,6 @@
 # make install    Installs the package on your system
 # make uninstall  Uninstalls the package from your system
 # make clean      Cleans results of building process
-# make clean-all  Cleans everything (project files and libs)
 # make dist       Creates source code "tarball"
 # make doc        Generates the documentation with doxygen
 # make docclean   Removes the documentation
@@ -40,7 +39,7 @@
 # General Info
 PACKAGE = nsnake
 VERSION = 3.0.1
-DATE    = $(shell date "+%b%Y")
+SDATE    = $(shell date "+%b%Y")
 
 # Install dirs
 PREFIX      = /usr
@@ -66,8 +65,8 @@ EXE         = $(PACKAGE)
 CDEBUG      = -O2
 CXXFLAGS    = $(CDEBUG) -Wall -Wextra $(CFLAGS_PLATFORM)
 LDFLAGS     = -lncurses $(LDFLAGS_PLATFORM)
-INCLUDESDIR = -I"src/" -I"deps/"
-LIBSDIR     =
+INCLUDESDIR = -I"src/" -I"deps/" -I/usr/include/cppconn
+LIBSDIR     = -L/usr/lib -lmysqlcppconn
 
 # Project source files
 CFILES   = $(shell find src -type f -name '*.c')
@@ -88,7 +87,7 @@ COMMANDER_CFLAGS  = -O2 -Wall -Wextra $(CFLAGS_PLATFORM)
 
 DEFINES = -DVERSION=\""$(VERSION)"\"                  \
           -DPACKAGE=\""$(PACKAGE)"\"                  \
-          -DDATE=\""$(DATE)"\"                        \
+          -DSDATE=\""$(SDATE)"\"                        \
           -DSYSTEM_LEVEL_DIR=\""$(LEVELDIR)"\"
 
 # Distribution tarball
@@ -124,7 +123,7 @@ install: all
 	$(MUTE)install -pdm755 $(DESTDIR)$(BINDIR)
 	$(MUTE)install -pm755 bin/$(EXE) $(DESTDIR)$(BINDIR)
 
-	-$(MUTE)cat $(MANPAGE) | sed -e "s|DATE|$(DATE)|g" -e "s|VERSION|$(VERSION)|g" >$(MANFILE)
+	-$(MUTE)cat $(MANPAGE) | sed -e "s|DATE|$(SDATE)|g" -e "s|VERSION|$(VERSION)|g" >$(MANFILE)
 	$(MUTE)install -pdm755 $(DESTDIR)$(MANDIR)
 	$(MUTE)install -pm644 $(MANFILE) $(DESTDIR)$(MANDIR)
 	$(MUTE)rm -f $(MANFILE)
@@ -160,7 +159,7 @@ src/%.o: src/%.cpp
 	# Compiling $<...
 	$(MUTE)$(CXX) $(CXXFLAGS) $(CDEBUG) $< -c -o $@ $(DEFINES) $(INCLUDESDIR)
 
-dist: clean-all $(DISTDIR).tar.gz
+dist: clean $(DISTDIR).tar.gz
 
 # This creates a tarball with all the files
 # versioned by GIT.
@@ -194,10 +193,6 @@ clean:
 	$(MUTE)rm $(VTAG) -f $(OBJECTS)
 	$(MUTE)rm $(VTAG) -f bin/$(EXE)
 
-clean-all: clean
-	# Cleaning dependency object files...
-	$(MUTE)rm $(VTAG) -f $(ENGINE_OBJECTS) $(COMMANDER_OBJECTS)
-
 dirs:
 	$(MUTE)mkdir -p bin
 
@@ -209,7 +204,7 @@ docclean:
 	# Removing documentation...
 	-$(MUTE)rm $(VTAG) -rf doc/html
 
-.PHONY: clean clean-all dirs doc docclean uninstall
+.PHONY: clean dirs doc docclean uninstall
 
 # Engine stuff
 $(ENGINE_DIR)/%.o: $(ENGINE_DIR)/%.cpp
