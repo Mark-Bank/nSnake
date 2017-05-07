@@ -1,0 +1,160 @@
+cmake_minimum_required(VERSION 3.7)
+project(nSnake)
+
+set(CMAKE_CXX_STANDARD 11)
+
+set(SOURCE_FILES
+        deps/commander/commander.c
+        deps/commander/commander.h
+        deps/Engine/Flow/GameState.hpp
+        deps/Engine/Flow/StateManager.cpp
+        deps/Engine/Flow/StateManager.hpp
+        deps/Engine/Graphics/Widgets/Menu/MenuItem/MenuItemCheckbox.cpp
+        deps/Engine/Graphics/Widgets/Menu/MenuItem/MenuItemCheckbox.hpp
+        deps/Engine/Graphics/Widgets/Menu/MenuItem/MenuItemLabel.cpp
+        deps/Engine/Graphics/Widgets/Menu/MenuItem/MenuItemLabel.hpp
+        deps/Engine/Graphics/Widgets/Menu/MenuItem/MenuItemNumberbox.cpp
+        deps/Engine/Graphics/Widgets/Menu/MenuItem/MenuItemNumberbox.hpp
+        deps/Engine/Graphics/Widgets/Menu/MenuItem/MenuItemTextbox.cpp
+        deps/Engine/Graphics/Widgets/Menu/MenuItem/MenuItemTextbox.hpp
+        deps/Engine/Graphics/Widgets/Menu/MenuItem/MenuItemTextlist.cpp
+        deps/Engine/Graphics/Widgets/Menu/MenuItem/MenuItemTextlist.hpp
+        deps/Engine/Graphics/Widgets/Menu/MenuAlphabetic.cpp
+        deps/Engine/Graphics/Widgets/Menu/MenuAlphabetic.hpp
+        deps/Engine/Graphics/Widgets/Menu/MenuItem.cpp
+        deps/Engine/Graphics/Widgets/Menu/MenuItem.hpp
+        deps/Engine/Graphics/Widgets/Dialog.cpp
+        deps/Engine/Graphics/Widgets/Dialog.hpp
+        deps/Engine/Graphics/Widgets/Menu.cpp
+        deps/Engine/Graphics/Widgets/Menu.hpp
+        deps/Engine/Graphics/Animation.hpp
+        deps/Engine/Graphics/Colors.cpp
+        deps/Engine/Graphics/Colors.hpp
+        deps/Engine/Graphics/Layout.cpp
+        deps/Engine/Graphics/Layout.hpp
+        deps/Engine/Graphics/Ncurses.cpp
+        deps/Engine/Graphics/Ncurses.hpp
+        deps/Engine/Graphics/Window.cpp
+        deps/Engine/Graphics/Window.hpp
+        deps/Engine/Helpers/Array2D.hpp
+        deps/Engine/Helpers/Base64.cpp
+        deps/Engine/Helpers/Base64.hpp
+        deps/Engine/Helpers/File.cpp
+        deps/Engine/Helpers/File.hpp
+        deps/Engine/Helpers/INI.cpp
+        deps/Engine/Helpers/INI.hpp
+        deps/Engine/Helpers/String.cpp
+        deps/Engine/Helpers/String.hpp
+        deps/Engine/Helpers/Timer.cpp
+        deps/Engine/Helpers/Timer.hpp
+        deps/Engine/Helpers/Utils.cpp
+        deps/Engine/Helpers/Utils.hpp
+        deps/Engine/EngineGlobals.cpp
+        deps/Engine/EngineGlobals.hpp
+        deps/Engine/InputManager.cpp
+        deps/Engine/InputManager.hpp
+        doc/man/nsnake.6
+        doc/doxygen_mainpage.hpp
+        levels/3-hearts.nsnake
+        levels/arena00.nsnake
+        levels/arena01.nsnake
+        levels/arena02.nsnake
+        levels/balls.nsnake
+        levels/cave00.nsnake
+        levels/diagonal-split.nsnake
+        levels/horizontal-madness.nsnake
+        levels/lenny.nsnake
+        levels/NSNAKE.nsnake
+        levels/retro00.nsnake
+        levels/retro01.nsnake
+        levels/retro02.nsnake
+        levels/retro03.nsnake
+        levels/retro04.nsnake
+        levels/retro05-2.nsnake
+        levels/retro05.nsnake
+        levels/retro06.nsnake
+        levels/retro07.nsnake
+        levels/s.nsnake
+        levels/spiral-large.nsnake
+        levels/squares00.nsnake
+        levels/squares01.nsnake
+        levels/squares02.nsnake
+        levels/tetris.nsnake
+        levels/tricky-horizontal.nsnake
+        levels/tricky-vertical.nsnake
+        levels/tricky.nsnake
+        levels/vertical-madness.nsnake
+        levels/w.nsnake
+        levels/z.nsnake
+        misc/nsnake.desktop
+        misc/nsnake16.png
+        misc/nsnake32.png
+        misc/nsnake32.xpm
+        src/Config/Arguments.cpp
+        src/Config/Arguments.hpp
+        src/Config/Globals.cpp
+        src/Config/Globals.hpp
+        src/Display/Animations/AnimationFire.cpp
+        src/Display/Animations/AnimationFire.hpp
+        src/Display/Animations/AnimationGameOfLife.cpp
+        src/Display/Animations/AnimationGameOfLife.hpp
+        src/Display/Animations/AnimationSnakes.cpp
+        src/Display/Animations/AnimationSnakes.hpp
+        src/Display/Animations/AnimationWater.cpp
+        src/Display/Animations/AnimationWater.hpp
+        src/Display/Layouts/LayoutFirstTime.cpp
+        src/Display/Layouts/LayoutFirstTime.hpp
+        src/Display/Layouts/LayoutGame.cpp
+        src/Display/Layouts/LayoutGame.hpp
+        src/Display/Layouts/LayoutMainMenu.cpp
+        src/Display/Layouts/LayoutMainMenu.hpp
+        src/Display/WindowGameHelp.cpp
+        src/Display/WindowGameHelp.hpp
+        src/Entities/Board.cpp
+        src/Entities/Board.hpp
+        src/Entities/BoardParser.cpp
+        src/Entities/BoardParser.hpp
+        src/Entities/FruitManager.cpp
+        src/Entities/FruitManager.hpp
+        src/Entities/Game.cpp
+        src/Entities/Game.hpp
+        src/Entities/Player.cpp
+        src/Entities/Player.hpp
+        src/Entities/ScoreFile.cpp
+        src/Entities/ScoreFile.hpp
+        src/States/GameStateGame.cpp
+        src/States/GameStateGame.hpp
+        src/States/GameStateMainMenu.cpp
+        src/States/GameStateMainMenu.hpp
+        src/main.cpp
+        src/README.md
+        Doxyfile
+        Makefile)
+
+include_directories(.)
+include_directories(deps)
+include_directories(deps/commander)
+include_directories(deps/Engine)
+include_directories(deps/Engine/Flow)
+include_directories(deps/Engine/Graphics)
+include_directories(deps/Engine/Graphics/Widgets)
+include_directories(deps/Engine/Graphics/Widgets/Menu)
+include_directories(deps/Engine/Graphics/Widgets/Menu/MenuItem)
+include_directories(deps/Engine/Helpers)
+include_directories(doc)
+include_directories(doc/man)
+include_directories(levels)
+include_directories(misc)
+include_directories(src)
+include_directories(src/Config)
+include_directories(src/Display)
+include_directories(src/Display/Animations)
+include_directories(src/Display/Layouts)
+include_directories(src/Entities)
+include_directories(src/States)
+include_directories(/Users/mark/Downloads/msql-cpp-from-git/mysql-connector-cpp-master)
+#include_directories(/Users/mark/Downloads/msql-cpp-from-git/mysql-connector-cpp-master/driver)
+#include_directories(/Users/mark/Downloads/msql-cpp-from-git/mysql-connector-cpp-master/cppconn)
+#include_directories(/Users/mark/Downloads/msql-cpp-from-git/mysql-connector-cpp-master/thread)
+
+add_executable(nSnake ${SOURCE_FILES})
