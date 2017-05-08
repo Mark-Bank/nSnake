@@ -12,7 +12,7 @@ void version(command_t* self)
 	(void)(self);
 
 	std::cout <<
-		"nsnake v" VERSION " (" DATE ")\n"
+		"nsnake v" VERSION " (" SDATE ")\n"
 		"\n"
 		"   ,           ,\n"
 		"  /             \\  This game was made with\n"
@@ -39,7 +39,7 @@ void help(command_t* self)
 		" _      __   _       __    _     ____ \n"
 		"| |\\ | ( (` | |\\ |  / /\\  | |_/ | |_  \n"
 		"|_| \\| _)_) |_| \\| /_/--\\ |_| \\ |_|__ \n"
-		"v" VERSION "                 (built " DATE ")\n"
+		"v" VERSION "                 (built " SDATE ")\n"
 		"\n"
 		"nsnake is the classical snake game on the terminal\n"
 		"\n"
